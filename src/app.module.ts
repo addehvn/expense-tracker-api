@@ -29,7 +29,8 @@ import { TransactionsModule } from './transactions/transactions.module';
 
         autoLoadEntities:true,
         synchronize:true 
-      })
+      }),
+      
     }),
     AuthModule,
     UserModule,
