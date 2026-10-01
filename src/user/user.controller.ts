@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Req, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import type  { AuthRequset } from '../Interfaces/Req.payload';
 import { jwtGuard } from '../guards/jwt-guard';
@@ -25,5 +25,13 @@ export class UserController {
       req.user.userId,
       body
     ) 
+  }
+
+  @UseGuards(jwtGuard)
+  @Delete('delete')
+  deleteUser(@Req() req:AuthRequset){
+    return this.userService.deleteUser(
+      req.user.userId
+    )
   }
   }

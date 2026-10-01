@@ -8,40 +8,53 @@ import { userupdateDto } from '../DTOs/userUpodateDto';
 @Injectable()
 export class UserService {
   constructor(@InjectRepository(User)
-    private readonly userRepositry:Repository<User>){}
+  private readonly userRepositry:Repository<User>){}
     
-    findByEmail(email:string){
-      return this.userRepositry.findOne({
-        where:{email}
-      })
-    }
+  findByEmail(email:string){
+    return this.userRepositry.findOne({
+      where:{email}
+    })
+  }
 
-    createUser(body:UserSignupDto){
-    const user= this.userRepositry.create({
-        ...body
-      })
+  createUser(body:UserSignupDto){
+  const user= this.userRepositry.create({
+      ...body
+    })
+    
+    return this.userRepositry.save(user)
+  }
+
+  userProfile(userId:number ){
+    return this.userRepositry.findOne({
       
-      return this.userRepositry.save(user)
-    }
+      where:{userId:userId}
+      
+    })
+  }
 
-    userProfile(userId:number ){
-      return this.userRepositry.findOne({
-        
-        where:{userId:userId}
-        
-      })
-    }
+  async updateUser(userId:number , body:userupdateDto){
+    const updateUser = await this.userRepositry.update(
+      userId,
+      body 
+    )
+    return({
+        message:'user Updated successfully',
+        body
+    }    
+    )
+  }
 
-    async updateUser(userId:number , body:userupdateDto){
-      const updateUser = await this.userRepositry.update(
-       userId,
-        body 
-      )
-      return({
-         message:'user Updated successfully',
-         body
-      }    
-      )
-      }
+  async deleteUser(userId:number){
+    await this.userRepositry.delete({
+      userId
+    })
+
+    return {
+      message:'user deleted Successfully'
+    }
+    
+  }
+
+  
 
 }
