@@ -15,7 +15,6 @@ import { JwtStrategy } from '../strategy/JWT-strategy';
   imports:[
     TypeOrmModule.forFeature([User]),
     PassportModule,
-    UserModule,
     JwtModule.registerAsync({
       imports:[ConfigModule],
       inject:[ConfigService],
