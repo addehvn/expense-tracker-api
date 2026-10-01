@@ -5,7 +5,7 @@ import { JwtPayload } from "../Interfaces/payload-JWT.inerface";
 
 @Injectable()
 
-export class JWTStrategy extends PassportStrategy(Strategy){
+export class JwtStrategy extends PassportStrategy(Strategy){
   constructor(
   ){
     super({
@@ -16,7 +16,7 @@ export class JWTStrategy extends PassportStrategy(Strategy){
   validate(payload:JwtPayload
     ){
       return {
-        userId:payload.sub,
+        userId:payload.userId,
         email:payload.email
         
       }

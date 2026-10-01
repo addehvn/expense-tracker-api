@@ -22,4 +22,12 @@ export class UserService {
       
       return this.userRepositry.save(user)
     }
+
+    userProfile(userId:number ){
+      return this.userRepositry.findOne({
+        
+        where:{userId:userId}
+        
+      })
+    }
 }
