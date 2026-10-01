@@ -4,7 +4,8 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 export class User{
   @PrimaryGeneratedColumn()
   userId:number
-
+  @Column({type:'varchar', nullable:true , default:null})
+  refreshToken:string | null 
   @Column()
   username:string
   @Column()
@@ -15,5 +16,5 @@ export class User{
   created_at:Date
   @UpdateDateColumn()
   updated_at:Date 
-
+  
 }
