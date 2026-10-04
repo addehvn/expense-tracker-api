@@ -1,13 +1,13 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
-import { accounts } from '../Entities/account-Entity';
+import { Accounts } from '../Entities/account-Entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateAccountDto } from '../DTOs/createAccountDto';
 
 @Injectable()
 export class AccountService {
-  constructor(@InjectRepository(accounts)
-  private readonly accountRepository:Repository<accounts>,
+  constructor(@InjectRepository(Accounts)
+  private readonly accountRepository:Repository<Accounts>,
 ){
  }
 

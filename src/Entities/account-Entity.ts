@@ -3,7 +3,7 @@ import { User } from "./user-entity";
 
 
 @Entity('accounts')
-export class accounts{
+export class Accounts{
   @PrimaryGeneratedColumn()
   accountId:number
 
