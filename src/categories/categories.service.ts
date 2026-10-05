@@ -25,7 +25,7 @@ export class CategoriesService {
     })
     
     if(!account){
-      throw new NotFoundException("account not exists")
+      throw new NotFoundException("account not found")
     }
     const category = await this.categoryRepositry.create({
       account,
@@ -49,7 +49,7 @@ export class CategoriesService {
     })
     
     if(!account){
-      throw new NotFoundException('account not exist')
+      throw new NotFoundException('account not update')
     }
     return await this.categoryRepositry.find({
       where:{
@@ -66,7 +66,7 @@ export class CategoriesService {
       }
     })
     if(!account){
-      throw new NotFoundException('account not exist')
+      throw new NotFoundException('account not update')
     }
     return await this.categoryRepositry.findOne({
       where:{
@@ -85,7 +85,7 @@ export class CategoriesService {
     })
 
     if(!account){
-      throw new NotFoundException('accoun not exist')
+      throw new NotFoundException('accoun not found')
     }
 
     const category= await this.categoryRepositry.findOne({

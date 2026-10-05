@@ -15,6 +15,4 @@ import { Accounts } from '../Entities/account-Entity';
   controllers: [CategoriesController],
   providers: [CategoriesService]
 })
-export class CategoriesModule {
-
-}
+export class CategoriesModule {}
