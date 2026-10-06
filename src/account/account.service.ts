@@ -3,6 +3,7 @@ import { Accounts } from '../Entities/account-Entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateAccountDto } from '../DTOs/createAccountDto';
+import { accountUpdateDto } from '../DTOs/accountUpdateDto';
 
 @Injectable()
 export class AccountService {
@@ -41,7 +42,27 @@ export class AccountService {
   }
   return account 
  }
-
+ async updateAccount(userId:number , accountId:number , body:accountUpdateDto){
+  const account= await this.accountRepository.findOne({
+    where:{
+      user:{userId},
+      accountId
+    }
+  })
+  if(!account){
+      throw new NotFoundException('account not found')
+    }
+    
+    await this.accountRepository.update(
+     {accountId},
+      body,
+      
+    )
+    return{
+      message:'account updated successfully',
+      body
+    }
+ }
  async deleteAccount(userId:number,accountId:number){
   const account = await this.accountRepository.findOne({
     where:{user:{userId},

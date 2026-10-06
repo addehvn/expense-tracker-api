@@ -1,10 +1,11 @@
 import { IsNumber, IsOptional, IsString } from "class-validator";
 
-export class updateTransactionDto{
+export class accountUpdateDto{
   @IsOptional()
   @IsString()
   name:string
+
   @IsOptional()
   @IsNumber()
-  price:number
+  balance:number
 }

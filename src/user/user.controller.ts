@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Patch, Req, UseGuards } from '@nestjs/co
 import { UserService } from './user.service';
 import type  { AuthRequset } from '../Interfaces/Req.payload';
 import { jwtGuard } from '../guards/jwt-guard';
-import { userupdateDto } from '../DTOs/userUpodateDto';
+import { userupdateDto } from '../DTOs/userUpdateDto';
 
 @Controller('user')
 export class UserController {
